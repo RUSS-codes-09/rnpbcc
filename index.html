@@ -3,7 +3,49 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="RNP Business Consulting Corp. offers expert accounting, tax, auditing, payroll, and corporate registration services in the Philippines.">
   <title>RNP Business Consulting Corp.</title>
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ProfessionalService",
+    "name": "RNP Business Consulting Corp.",
+    "url": "https://rnpbccwebsite.netlify.app/",
+    "logo": "https://rnpbccwebsite.netlify.app/images/RNPcopy.png",
+    "image": "https://rnpbccwebsite.netlify.app/images/group.jpg",
+    "description": "RNP Business Consulting Corp. provides expert accounting, tax, auditing, payroll, corporate registration, and personal consultation services to businesses in the Philippines.",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Unit 916 Cityland Herrera Tower, 98 V.A. Rufino Corner Valero Street",
+      "addressLocality": "Makati",
+      "addressRegion": "Metro Manila",
+      "postalCode": "1226",
+      "addressCountry": "PH"
+    },
+    "telephone": "+639778431223",
+    "email": "sallypagudar@gmail.com",
+    "contactPoint": {
+      "@type": "ContactPoint",
+      "telephone": "+639778431223",
+      "email": "sallypagudar@gmail.com",
+      "contactType": "Customer Service",
+      "areaServed": "PH",
+      "availableLanguage": "en"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": 14.5547,
+      "longitude": 121.0244
+    },
+    "sameAs": [
+      "https://www.facebook.com/sallypagudar",
+      "https://www.linkedin.com/company/sallypagudar"
+    ]
+  }
+  </script>
+
   <style>
     * {
       margin: 0;
@@ -23,9 +65,9 @@
       background-color: #ffffff;
       box-shadow: 0 2px 5px rgba(0,0,0,0.1);
       padding: 1rem 0;
-      position: relative;
+      position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
     }
 
     .container {
@@ -75,19 +117,30 @@
       transform: translateY(-3px);
     }
 
+    /* Mobile Hamburger */
+    #menuToggle {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 30px;
+      height: 21px;
+      cursor: pointer;
+    }
+
+    #menuToggle span {
+      height: 3px;
+      width: 100%;
+      background: #000;
+      border-radius: 2px;
+      transition: all 0.3s ease;
+    }
+
     /* Hero Section */
     .hero {
       width: 100%;
       height: 400px;
       overflow: hidden;
       position: relative;
-    }
-
-    .hero p {
-      font-size: 1.5rem;
-      color: #fff;
-      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
-      margin-top: 20px;
     }
 
     .hero img {
@@ -130,7 +183,6 @@
     .buttoninq {
       text-align: center;
       margin: 30px auto;
-      width: 100%;
     }
 
     .buttoninq a {
@@ -155,8 +207,7 @@
     }
 
     .aboutus {
-      margin-top: 5em;
-      margin-bottom: 5em;
+      margin: 5em 0;
     }
 
     .aboutus h1 {
@@ -199,22 +250,12 @@
       box-shadow: 0 4px 10px rgba(0,0,0,0.1);
       transition: transform 0.3s ease;
       text-align: center;
+      padding: 1.5rem;
     }
 
     .service-card:hover {
       transform: translateY(-10px);
       box-shadow: 0 10px 25px rgba(0,0,0,0.15);
-    }
-
-    .service-icon {
-      padding: 1.5rem 0;
-    }
-
-    .service-icon img {
-      width: 100%;
-      max-width: 200px;
-      height: auto;
-      object-fit: cover;
     }
 
     .service-card h3 {
@@ -224,7 +265,6 @@
 
     .service-card p {
       color: #cc9900;
-      padding: 0 1rem 1.5rem;
     }
 
     footer {
@@ -300,6 +340,8 @@
       font-weight: 600;
       transition: all 0.3s ease;
       cursor: pointer;
+      border: none;
+      font-size: 1rem;
     }
 
     .btn:hover {
@@ -350,6 +392,36 @@
       color: rgba(255,255,255,0.7);
       font-size: 0.9rem;
     }
+
+    /* Mobile Menu */
+    @media (max-width: 768px) {
+      .nav-links {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        background: white;
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        padding: 1.5rem 0;
+        box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        transform: translateY(-150%);
+        transition: transform 0.3s ease;
+        gap: 1.2rem;
+      }
+
+      .nav-links.active {
+        transform: translateY(0);
+      }
+
+      #menuToggle {
+        display: flex;
+      }
+
+      .hero h1 {
+        font-size: 2rem;
+      }
+    }
   </style>
 </head>
 <body>
@@ -358,10 +430,15 @@
   <header>
     <div class="container header-content" id="home">
       <div class="logo">
-        <img src="images\RNPcopy.png" alt="RNP Logo" />
+        <img src="images/RNPcopy.png" alt="RNP Logo" />
         <span class="logo-text">BUSINESS CONSULTING CORP.</span>
       </div>
-      <nav class="nav-links">
+      <button id="menuToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <nav class="nav-links" id="navMenu">
         <a href="#about">About Us</a>
         <a href="#services">Our Services</a>
         <a href="#contact">Contact Us</a>
@@ -371,7 +448,7 @@
 
   <!-- Hero Section -->
   <section class="hero">
-    <img src="images\background.jpg" alt="Accounting" />
+    <img src="images/background.jpg" alt="RNP Business Consulting" />
     <div class="hero-overlay">
       <div class="hero-title">
         <h1>Driving Business Excellence in the Philippines.</h1>
@@ -386,40 +463,41 @@
     <a href="#contact" class="btn">Inquire Now</a>
   </div>
 
+  <!-- Services Section -->
   <section id="services">
-  <div class="container">
-    <div class="section-header">
-      <h2>Our Services</h2>
-      <p>Comprehensive financial solutions tailored to meet your business needs</p>
+    <div class="container">
+      <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2.2rem; margin-bottom: 0.5rem;">Our Services</h2>
+        <p>Comprehensive financial solutions tailored to meet your business needs</p>
+      </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <h3>Accounting & Bookkeeping</h3>
+          <p>Accurate financial record-keeping and reporting to keep your business compliant and informed.</p>
+        </div>
+        <div class="service-card">
+          <h3>Corporate Registration</h3>
+          <p>Guidance through the complex process of business registration and licensing in the Philippines.</p>
+        </div>
+        <div class="service-card">
+          <h3>Tax Services</h3>
+          <p>Comprehensive tax planning, preparation, and compliance services to optimize your tax position.</p>
+        </div>
+        <div class="service-card">
+          <h3>Personal Consultations</h3>
+          <p>One-on-one sessions to address your specific financial questions and business challenges.</p>
+        </div>
+        <div class="service-card">
+          <h3>Auditing</h3>
+          <p>Thorough financial audits to ensure accuracy, compliance, and transparency in your records.</p>
+        </div>
+        <div class="service-card">
+          <h3>Payroll</h3>
+          <p>Efficient payroll processing and compliance with Philippine labor and tax regulations.</p>
+        </div>
+      </div>
     </div>
-    <div class="services-grid">
-      <div class="service-card">
-        <h3>Accounting & Bookkeeping</h3>
-        <p>Accurate financial record-keeping and reporting to keep your business compliant and informed.</p>
-      </div>
-      <div class="service-card">
-        <h3>Corporate Registration</h3>
-        <p>Guidance through the complex process of business registration and licensing in the Philippines.</p>
-      </div>
-      <div class="service-card">
-        <h3>Tax Services</h3>
-        <p>Comprehensive tax planning, preparation, and compliance services to optimize your tax position.</p>
-      </div>
-      <div class="service-card">
-        <h3>Personal Consultations</h3>
-        <p>One-on-one sessions to address your specific financial questions and business challenges.</p>
-      </div>
-      <div class="service-card">
-        <h3>Auditing</h3>
-        <p>Thorough financial audits to ensure accuracy, compliance, and transparency in your records.</p>
-      </div>
-      <div class="service-card">
-        <h3>Payroll</h3>
-        <p>Efficient payroll processing and compliance with Philippine labor and tax regulations.</p>
-      </div>
-    </div>
-  </div>
-</section>
+  </section>
 
   <!-- About Section -->
   <section id="about">
@@ -428,15 +506,15 @@
       <div class="container">
         <p>Our company was formed by a group of like-minded professionals who used to work for one of the biggest auditing firms in the world. The company is managed by individuals who gained their work experiences locally and internationally in the field of financial services, real estate, telecommunications, manufacturing, retail, mining and construction, business process outsourcing, shipping, and non-profit organization. Our commitment is to provide our clients with the best service at par with the big firms.</p>
       </div>
-      <div class="group"><img src="images\group.jpg" alt="RNP Team"></div>
+      <div class="group"><img src="images/group.jpg" alt="RNP Team"></div>
     </div>
   </section>
 
   <!-- Contact Section -->
   <section id="contact">
     <div class="container">
-      <div class="section-header">
-        <h2>Get in Touch</h2>
+      <div class="section-header" style="text-align: center; margin-bottom: 2rem;">
+        <h2 style="font-size: 2.2rem;">Get in Touch</h2>
         <p>Schedule a free consultation to discuss your business needs</p>
       </div>
       <div style="max-width: 600px; margin: 0 auto;">
@@ -469,7 +547,7 @@
             <label for="message">Message *</label>
             <textarea id="message" name="message" class="form-control" required></textarea>
           </div>
-          <!-- Honeypot field -->
+          <!-- Honeypot -->
           <div class="form-group honeypot">
             <label for="website">Website</label>
             <input type="text" id="website" name="website">
@@ -480,7 +558,7 @@
     </div>
   </section>
 
-  <!-- Toast Notification -->
+  <!-- Toast -->
   <div id="toast" class="toast"></div>
 
   <!-- Footer -->
@@ -490,42 +568,41 @@
         <div class="footer-section">
           <h3>Contact Us</h3>
           <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>Unit 916 Cityland Herrera tower, 98 V.A. Rufino Corner Valero Street, Salcedo Village, Makati, Manila, 1200, Philippines</div>
+            <div>📍</div>
+            <div>Unit 916 Cityland Herrera Tower, 98 V.A. Rufino Corner Valero Street, Salcedo Village, Makati, Metro Manila, 1226, Philippines</div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">✉️</div>
+            <div>✉️</div>
             <div>sallypagudar@gmail.com</div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div>0977-843-1223</div>
+            <div>📞</div>
+            <div>+63 977 843 1223</div>
           </div>
         </div>
         <div class="footer-section">
           <h3>Quick Links</h3>
           <div class="contact-item">
-            <div class="contact-icon">→</div>
+            <div>→</div>
             <div><a href="#home" style="color: white; text-decoration: none;">Home</a></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">→</div>
+            <div>→</div>
             <div><a href="#services" style="color: white; text-decoration: none;">Services</a></div>
           </div>
           <div class="contact-item">
-            <div class="contact-icon">→</div>
+            <div>→</div>
             <div><a href="#contact" style="color: white; text-decoration: none;">Contact</a></div>
           </div>
         </div>
         <div class="footer-section">
           <h3>Connect With Us</h3>
           <div class="social-links" style="text-align: center; margin: 20px 0;">
-            <a href="https://www.facebook.com/sallypagudar" target="_blank" rel="noopener">
+            <a href="https://www.facebook.com/sallypagudar" target="_blank" rel="noopener" style="margin: 0 8px;">
               <img src="https://cdn-icons-png.flaticon.com/512/20/20837.png" alt="Facebook" width="40" height="40">
             </a>
-            &nbsp;&nbsp;
-            <a href="https://www.linkedin.com/company/sallypagudar" target="_blank" rel="noopener">
-              <img src="https://www.vhv.rs/dpng/d/405-4051094_vector-linkedin-logo-svg-hd-png-download.png" alt="LinkedIn" width="40" height="40">
+            <a href="https://www.linkedin.com/company/sallypagudar" target="_blank" rel="noopener" style="margin: 0 8px;">
+              <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/ca/LinkedIn_logo_initials.png/480px-LinkedIn_logo_initials.png" alt="LinkedIn" width="40" height="40">
             </a>
           </div>
         </div>
@@ -536,150 +613,102 @@
     </div>
   </footer>
 
-<div class="toast" id="toast"></div>
-  
-  <!-- EmailJS Script -->
-  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
   <script>
-        // Initialize EmailJS with your public key
-        (function(){
-            emailjs.init("vMYda-rUq10Yz3DSq"); // REPLACE WITH YOUR EMAILJS PUBLIC KEY
-        })();
+    // Initialize EmailJS
+    emailjs.init("vMYda-rUq10Yz3DSq");
 
-        // Mobile Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navMenu = document.getElementById('navMenu');
+    // Hamburger Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const navMenu = document.getElementById('navMenu');
 
-        menuToggle.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
+    menuToggle.addEventListener('click', () => {
+      navMenu.classList.toggle('active');
+      // Animate hamburger to X
+      const spans = menuToggle.querySelectorAll('span');
+      if (navMenu.classList.contains('active')) {
+        spans[0].style.transform = 'rotate(45deg) translate(8px, 8px)';
+        spans[1].style.opacity = '0';
+        spans[2].style.transform = 'rotate(-45deg) translate(8px, -8px)';
+      } else {
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      }
+    });
 
-        // Close menu when clicking a link
-        document.querySelectorAll('#navMenu a').forEach(link => {
-            link.addEventListener('click', () => {
-                navMenu.classList.remove('active');
-            });
-        });
+    // Close mobile menu on link click
+    document.querySelectorAll('#navMenu a').forEach(link => {
+      link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+        // Reset hamburger
+        const spans = menuToggle.querySelectorAll('span');
+        spans[0].style.transform = 'none';
+        spans[1].style.opacity = '1';
+        spans[2].style.transform = 'none';
+      });
+    });
 
-        // Smooth scrolling for anchor links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function(e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    window.scrollTo({
-                        top: target.offsetTop - 70,
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
+    // Smooth Scrolling
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        if (target) {
+          window.scrollTo({
+            top: target.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      });
+    });
 
-    
+    // Form Submission
+    const contactForm = document.getElementById('contactForm');
+    const submitBtn = document.getElementById('submitBtn');
+    const toast = document.getElementById('toast');
 
-        // Form Submission with EmailJS
-        const contactForm = document.getElementById('contactForm');
-        const submitBtn = document.getElementById('submitBtn');
-        const toast = document.getElementById('toast');
+    if (contactForm) {
+      contactForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
 
-        contactForm.addEventListener('submit', async (e) => {
-            e.preventDefault();
-            
-            // Check honeypot
-            const honeypot = document.getElementById('website');
-            if (honeypot.value) {
-                showToast('Spam detected!', 'error');
-                return;
-            }
-            
-            // Disable submit button
-            submitBtn.disabled = true;
-            submitBtn.textContent = 'Sending...';
-            
-            try {
-                // Send email using EmailJS
-                const result = await emailjs.sendForm('service_1k9fa8e', 'template_b4ogrrq', '#contactForm');
-                
-                if (result.status === 200) {
-                    showToast('Message sent successfully! We will contact you soon.', 'success');
-                    contactForm.reset();
-                } else {
-                    throw new Error('Failed to send message');
-                }
-            } catch (error) {
-                console.error('EmailJS Error:', error);
-                showToast('Failed to send message. Please try again.', 'error');
-            } finally {
-                submitBtn.disabled = false;
-                submitBtn.textContent = 'Send Message';
-            }
-        });
-
-        // Toast function
-        function showToast(message, type) {
-            toast.textContent = message;
-            toast.className = `toast ${type} show`;
-            
-            setTimeout(() => {
-                toast.className = 'toast';
-            }, 3000);
+        const honeypot = document.getElementById('website');
+        if (honeypot && honeypot.value) {
+          showToast('Spam detected!', 'error');
+          return;
         }
 
-        // Active link highlighting
-        window.addEventListener('scroll', () => {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('#navMenu a');
-            
-            let current = '';
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (pageYOffset >= (sectionTop - 100)) {
-                    current = section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href').substring(1) === current) {
-                    link.classList.add('active');
-                }
-            });
-        });
+        submitBtn.disabled = true;
+        submitBtn.textContent = 'Sending...';
 
-        // JSON-LD Schema
-        const schemaScript = document.createElement('script');
-        schemaScript.type = 'application/ld+json';
-        schemaScript.textContent = JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Organization",
-            "name": "RNP Business Consulting Corp",
-            "url": "https://rnp.tiiny.site",
-            "logo": "https://placehold.co/200x100/2B4742/ffffff?text=RNP",
-            "contactPoint": {
-                "@type": "ContactPoint",
-                "telephone": "0977-843-1223",
-                "contactType": "Customer Service",
-                "email": "rnpbcc.russelvaldez@gmail.com",
-                "areaServed": "PH",
-                "availableLanguage": "en"
-            },
-            "address": {
-                "@type": "PostalAddress",
-                "streetAddress": "Unit 916 Cityland Herrera tower, 98 V.A. Rufino Corner Valero Street",
-                "addressLocality": "Makati",
-                "addressRegion": "Manila",
-                "postalCode": "1200",
-                "addressCountry": "PH"
-            }
-        });
-        document.head.appendChild(schemaScript);
-    
+        try {
+          const result = await emailjs.sendForm(
+            'service_1k9fa8e',
+            'template_b4ogrrq',
+            contactForm
+          );
+          showToast('Message sent successfully! We’ll contact you soon.', 'success');
+          contactForm.reset();
+        } catch (error) {
+          console.error('EmailJS Error:', error);
+          showToast('Failed to send. Please try again.', 'error');
+        } finally {
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send Message';
+        }
+      });
+    }
+
+    // Toast Helper
+    function showToast(message, type) {
+      toast.textContent = message;
+      toast.className = `toast ${type} show`;
+      setTimeout(() => {
+        toast.className = 'toast';
+      }, 3000);
+    }
   </script>
 </body>
 </html>
-
-
-
