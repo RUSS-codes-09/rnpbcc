@@ -1,0 +1,774 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RNP Business Consulting Corp.</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f5f5f5;
+      color: #333;
+      line-height: 1.6;
+    }
+
+    /* Header */
+    header {
+      background-color: #ffffff;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+      padding: 1rem 0;
+      position: relative;
+      top: 0;
+      z-index: 100;
+    }
+
+    .container {
+      width: 90%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    .header-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo img {
+      height: 50px;
+      width: auto;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: #000;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: #000;
+      font-weight: 600;
+      transition: color 0.3s ease;
+    }
+
+    .nav-links a:hover {
+      color: #c19b05;
+      transition: color 0.3s ease;
+      transform: translateY(-3px);
+    }
+
+    /* Hero Section */
+    .hero {
+      width: 100%;
+      height: 400px;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .hero p {
+      font-size: 1.5rem;
+      color: #fff;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+      margin-top: 20px;
+    }
+
+    .hero img {
+      width: 100%;
+      height: 100%;
+      overlay: auto;
+      object-fit: cover;
+    }
+
+  .hero-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* This pushes title to top, subtitle to bottom */
+  align-items: center;
+  color: rgb(0, 0, 0);
+  text-align: center;
+  z-index: 1;
+  padding: 2rem; /* Optional: add padding to avoid edge clipping */
+}
+
+    .hero h1 {
+      font-size: 5rem;
+      color: #f4f4f4;
+      text-shadow: 4px 4px 8px rgba(45, 44, 36, 0.7);
+      font-weight: bold;
+      letter-spacing: 1px;
+      margin: 0;
+    }
+
+.hero-title {
+  margin: top 10px;; /* Pushes title up if needed */
+}
+
+.hero-subtitle {
+  margin-bottom: 2rem; /* Optional: add spacing from bottom */
+  font-size: 1.2rem; /* Optional: adjust size for readability */
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+
+
+  .buttoninq {
+  text-align: center;
+  margin: 30px auto;
+  width: 100%;
+}
+
+.buttoninq a {
+  display: inline-block;
+  padding: 14px 32px;
+  background-color: #e6b800;
+  color: #000;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 10px;
+  text-transform: uppercase;
+  font-size: 1rem;
+  letter-spacing: 1px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.buttoninq a:hover {
+  background-color: #cc9900;
+  transform: translateY(-3px);
+  color: rgb(255, 255, 255);
+}
+.aboutus {
+    margin-top:5em;
+    margin-bottom: 5em;
+    
+}
+
+.aboutus h1 {
+text-align: center;
+color: #000000;
+font-weight: bold;
+text-transform: uppercase;
+padding: 1em;
+}
+
+.aboutus p {
+text-align: center;
+color: #000000;
+font-weight: normal;
+padding: 1em;
+}
+
+aboutus .group {
+    max-width: 400px; 
+    margin: 10 auto; 
+    padding: 50px; 
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+}
+
+.aboutus .group img {
+    width: 100%; 
+    height: auto; 
+    display: block; 
+    border-radius: 8px; 
+}
+
+  .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+
+        .service-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-align: center;
+            
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+        }
+
+        .service-icon {
+            width: 200px;
+            height: 100px;
+            background-color: transparent; /* removed circular background */
+            border-radius: 10%;               /* no circle */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            padding-bottom: 5em;
+        }
+
+        /* larger image inside service icon, keep aspect ratio */
+        .service-icon img {
+            width: 400px;
+            height: 400px;
+            object-fit: cover;
+            display: block;
+        }
+        .service-card h3 {
+            margin-top: 7em;
+            margin-bottom: 1rem;
+            color: rgb(0, 0, 0);
+        }
+
+        .service-card p {
+            color:#cc9900;
+            padding: 0 1rem 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        footer {
+            background-color:rgb(94, 93, 93);
+            color: white;
+            padding: 3rem 1rem 1.5rem;
+        }
+
+        .footer .copyright{
+            padding-bottom: 10%;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            color: white;
+            margin-bottom: 1.5rem;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .footer-section h3::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 2px;
+            background-color: white;
+        }
+
+        .contact-item {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .contact-icon {
+            color: var(--accent);
+            font-size: 1.2rem;
+            min-width: 24px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .social-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.1);
+            border-radius: 50%;
+            color: var(--white);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-link:hover {
+            background: goldenrod;
+            color: white;;
+            transform: translateY(-3px);
+        }
+
+
+        /* Form Styles */
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 600;
+            color: rgb(0, 0, 0) ;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 0.8rem;
+            border: 1px solid #ddd;
+            border-radius: var(--radius);
+            font-family: inherit;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--accent);
+            box-shadow: 0 0 0 3px rgba(230, 184, 0, 0.2);
+        }
+        .btn {
+    display: inline-block;
+    background-color: #eadb0a;
+    color: black;
+    padding: 0.8rem 2rem;
+    border-radius: 50px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: var(--transition);
+    cursor: pointer;
+    margin-bottom: 3px;
+}
+        .btn:hover {
+            background-color: #e0d103;
+            color: white;
+            transform: translateY(-3px);
+        }
+        textarea.form-control {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .honeypot {
+            display: none;
+        }
+
+        .toast {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 1rem 1.5rem;
+            border-radius: var(--radius);
+            color: white;
+            font-weight: 500;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            z-index: 2000;
+            transform: translateX(200%);
+            transition: transform 0.3s ease;
+        }
+
+        .toast.show {
+            transform: translateX(0);
+        }
+
+        .toast.success {
+            background-color: #4caf50;
+        }
+
+        .toast.error {
+            background-color: #f44336;
+        }
+
+        
+        .copyright {
+            text-align: center;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: rgba(255,255,255,0.7);
+            font-size: 0.9rem;
+        }
+
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header>
+    <div class="container header-content" ,  , id = "home">
+      <div class="logo">
+        <img src="images\RNPcopy.png" alt="RNP Logo" />
+        <span class="logo-text">BUSINESS CONSULTING CORP.</span>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About Us</a>
+        <a href="#services">Our Services</a>
+        <a href="#contact">Contact Us</a>
+      </nav>
+    </div>
+  </header>
+
+ <!-- Hero Section -->
+<section class="hero">
+  <img src="background.jpg" alt="Accounting" />
+  <div class="hero-overlay">
+    <div class="hero-title">
+      <h1>Driving Business Excellence in the Philippines.</h1>
+    </div>
+    <div class="hero-subtitle">
+      <p>We provide expert accounting, tax, and corporate services to help your business</p>
+    </div>
+  </div>
+</section>
+
+<div class = "buttoninq">
+	  <a href="#contact" class="btn">Inquire Now</a>
+
+</div>  
+  <!-- Services Section -->
+    <section id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Services</h2>
+                <p>Comprehensive financial solutions tailored to meet your business needs</p>
+            </div>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><img src="images\ac1.jpg" alt="Accounting & Bookkeeping"></div>
+                    <h3>Accounting & Bookkeeping</h3>
+                    <p>Accurate financial record-keeping and reporting to keep your business compliant and informed.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><img src="images\BIR1.jpg" alt="Corporate Registration"></div>
+                    <h3>Corporate Registration</h3>
+                    <p>Guidance through the complex process of business registration and licensing in the Philippines.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><img src="images\tax.jpg" alt="Tax Services"></div>
+                    <h3>Tax Services</h3>
+                    <p>Comprehensive tax planning, preparation, and compliance services to optimize your tax position.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><img src="images\Consultation.jpg" alt="Personal Consultations"></div>
+                    <h3>Personal Consultations</h3>
+                    <p>One-on-one sessions to address your specific financial questions and business challenges.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><img src="images\Audit.jpg" alt="Auditing"></div>
+                    <h3>Auditing</h3>
+                    <p>Thorough financial audits to ensure accuracy, compliance, and transparency in your records.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><img src="images\payroll.jpg" alt="Payroll"></div>
+                    <h3>Payroll</h3>
+                    <p>Efficient payroll processing and compliance with Philippine labor and tax regulations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+<section id="about us">
+<div class = "aboutus" , id = "about">
+	 <h1>ABOUT US</h1>
+    <div class="container", id ="aboutp"> 
+        <p>Our company was formed by a group of like-mided professionals who used to work for
+        one of the biggest auditing firms in the world. 
+        The company is managed by individuals who gained their work experiences locally and internationally
+        in the field of financial services, real estate, telecommunications, manufacturing, retail, mining
+        and construction, business process outsourcing, shipping, and non-profit organization. Our commitment
+        is to provide our clients with the best service at par with the big firms.</p>
+    </div> 
+
+    <div class = "group"><img src="images\group.jpg" alt="RNP"></div>
+</div>
+</section>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get in Touch</h2>
+                <p>Schedule a free consultation to discuss your business needs</p>
+            </div>
+            <div style="max-width: 600px; margin: 0 auto;">
+                <form id="contactForm">
+                    <div class="form-group">
+                        <label for="firstName">First Name *</label>
+                        <input type="text" id="firstName" name="firstName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="lastName">Last Name *</label>
+                        <input type="text" id="lastName" name="lastName" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" name="email" class="form-control" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="services">Services *</label>
+                        <select id="services" name="services" class="form-control" required>
+                            <option value="">Select a service</option>
+                            <option value="Accounting & Bookkeeping">Accounting & Bookkeeping</option>
+                            <option value="Corporate Registration">Corporate Registration</option>
+                            <option value="Tax Services">Tax Services</option>
+                            <option value="Personal Consultations">Personal Consultations</option>
+                            <option value="Auditing">Auditing</option>
+                            <option value="Payroll">Payroll</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea id="message" name="message" class="form-control" required></textarea>
+                    </div>
+                    <!-- Honeypot field -->
+                    <div class="form-group honeypot">
+                        <label for="website">Website</label>
+                        <input type="text" id="website" name="website">
+                    </div>
+                    <button type="submit" class="btn" id="submitBtn">Send Message</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Contact Us</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">📍</div>
+                        <div>
+                            Unit 916 Cityland Herrera tower, 98 V.A. Rufino Corner Valero Street, Salcedo Village, Makati, Manila, 1200, Philippines
+                        </div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">✉️</div>
+                        <div>sallypagudar@gmail.com</div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">📞</div>
+                        <div>0977-843-1223</div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Quick Links</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon">→</div>
+                        <div><a href="#home" style="color: white; text-decoration: none;">Home</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">→</div>
+                        <div><a href="#services" style="color: white; text-decoration: none;">Services</a></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon">→</div>
+                        <div><a href="#contact" style="color: white; text-decoration: none;">Contact</a></div>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Connect With Us</h3>
+                   <div class="social-links" style="text-align: center; margin: 20px 0;">
+  <a href="https://www.facebook.com/sallypagudar" target="_blank" rel="noopener">
+    <img src="https://cdn-icons-png.flaticon.com/512/20/20837.png" alt="Facebook" width="40" height="40">
+  </a>
+  &nbsp;&nbsp;
+  <a href="https://www.linkedin.com/company/sallypagudar" target="_blank" rel="noopener">
+    <img src="https://www.vhv.rs/dpng/d/405-4051094_vector-linkedin-logo-svg-hd-png-download.png" alt="LinkedIn" width="40" height="40">
+  </a>
+</div>
+                </div>
+            </div>
+            <div class="copyright">
+                <p>© 2025 RNP Business Consulting Corporation. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+
+
+<script src="https://cdn.emailjs.com/dist/email.min.js">
+
+        // Initialize EmailJS with your public key
+        (function(){
+            emailjs.init("jXRIqakjCgzhZu-vo"); // REPLACE WITH YOUR EMAILJS PUBLIC KEY
+        })();
+
+        // Mobile Menu Toggle
+        const menuToggle = document.getElementById('menuToggle');
+        const navMenu = document.getElementById('navMenu');
+
+        menuToggle.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking a link
+        document.querySelectorAll('#navMenu a').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+            });
+        });
+
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    window.scrollTo({
+                        top: target.offsetTop - 70,
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // Testimonial Slider
+        const testimonials = document.querySelector('.testimonials');
+        const prevBtn = document.querySelector('.prev-btn');
+        const nextBtn = document.querySelector('.next-btn');
+        let currentIndex = 0;
+        const testimonialCount = document.querySelectorAll('.testimonial').length;
+
+        function updateTestimonials() {
+            testimonials.style.transform = `translateX(-${currentIndex * 100}%)`;
+        }
+
+        prevBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex - 1 + testimonialCount) % testimonialCount;
+            updateTestimonials();
+        });
+
+        nextBtn.addEventListener('click', () => {
+            currentIndex = (currentIndex + 1) % testimonialCount;
+            updateTestimonials();
+        });
+
+        // Auto-rotate testimonials
+        setInterval(() => {
+            currentIndex = (currentIndex + 1) % testimonialCount;
+            updateTestimonials();
+        }, 5000);
+
+        // Form Submission with EmailJS
+        const contactForm = document.getElementById('contactForm');
+        const submitBtn = document.getElementById('submitBtn');
+        const toast = document.getElementById('toast');
+
+        contactForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            // Check honeypot
+            const honeypot = document.getElementById('website');
+            if (honeypot.value) {
+                showToast('Spam detected!', 'error');
+                return;
+            }
+            
+            // Disable submit button
+            submitBtn.disabled = true;
+            submitBtn.textContent = 'Sending...';
+            
+            try {
+                // Send email using EmailJS
+                const result = await emailjs.sendForm('service_1k9fa8e', 'template_ruia4oj', '#contactForm');
+                
+                if (result.status === 200) {
+                    showToast('Message sent successfully! We will contact you soon.', 'success');
+                    contactForm.reset();
+                } else {
+                    throw new Error('Failed to send message');
+                }
+            } catch (error) {
+                console.error('EmailJS Error:', error);
+                showToast('Failed to send message. Please try again.', 'error');
+            } finally {
+                submitBtn.disabled = false;
+                submitBtn.textContent = 'Send Message';
+            }
+        });
+
+        // Toast function
+        function showToast(message, type) {
+            toast.textContent = message;
+            toast.className = `toast ${type} show`;
+            
+            setTimeout(() => {
+                toast.className = 'toast';
+            }, 3000);
+        }
+
+        // Active link highlighting
+        window.addEventListener('scroll', () => {
+            const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAll('#navMenu a');
+            
+            let current = '';
+            
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                
+                if (pageYOffset >= (sectionTop - 100)) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').substring(1) === current) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // JSON-LD Schema
+        const schemaScript = document.createElement('script');
+        schemaScript.type = 'application/ld+json';
+        schemaScript.textContent = JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "RNP Business Consulting Corp",
+            "url": "https://rnpbcc.wixsite.com/mysite",
+            "logo": "https://placehold.co/200x100/2B4742/ffffff?text=RNP",
+            "contactPoint": {
+                "@type": "ContactPoint",
+                "telephone": "0977-843-1223",
+                "contactType": "Customer Service",
+                "email": "rnpbusinessconsultingcorp@gmail.com",
+                "areaServed": "PH",
+                "availableLanguage": "en"
+            },
+            "address": {
+                "@type": "PostalAddress",
+                "streetAddress": "Unit 916 Cityland Herrera tower, 98 V.A. Rufino Corner Valero Street",
+                "addressLocality": "Makati",
+                "addressRegion": "Manila",
+                "postalCode": "1200",
+                "addressCountry": "PH"
+            }
+        });
+        document.head.appendChild(schemaScript);
+    </script>
+</html>
